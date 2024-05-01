@@ -1,7 +1,7 @@
 const express = require("express");
-require("../src/db/conn");
+require("./src/db/conn");
 
-const userRouter = require("./routers/user")
+const userRouter = require("./src/routers/user")
 
 const app = express();
 const port = process.env.PORT || 3000;

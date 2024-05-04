@@ -7,9 +7,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim:true
     },
+    logoUrl: String,
     description: String,
-    about: String,
-    pictureUrl: String,
+    aboutDescription: String,
+    aboutTitle: String,
+    pictureUrl: {
+        home: String,
+        about: String
+    },
     social: [{ name: String, url: String }],
 }, {
     timestamps: true

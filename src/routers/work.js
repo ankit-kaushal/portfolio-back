@@ -1,12 +1,12 @@
 const express = require("express");
 const router = new express.Router();
-const UserModel = require("../models/users")
+const WorkModel = require("../models/works")
 
-router.post("/users", async (req, res)=>{
+router.post("/work", async (req, res)=>{
     try{
-        const addRecord = new UserModel(req.body)
-        const addUser = await addRecord.save();
-        res.send(addUser);
+        const addRecord = new WorkModel(req.body)
+        const addWork = await addRecord.save();
+        res.send(addWork);
     }catch(e){
         res.status(400).send(e);
     }
@@ -14,10 +14,10 @@ router.post("/users", async (req, res)=>{
     
     
     //list user
-    router.get("/users", async (req, res)=>{
+    router.get("/work", async (req, res)=>{
         try{
-            const getUser = await UserModel.find({});
-            res.send(getUser);
+            const getWork = await WorkModel.find({});
+            res.send(getWork);
         }catch(e){
             res.status(400).send(e);
         }
@@ -26,35 +26,35 @@ router.post("/users", async (req, res)=>{
     
     
     //get user
-    router.get("/users/:id", async (req, res)=>{
+    router.get("/work/:id", async (req, res)=>{
         try{
             const _id = req.params.id
-            const getUser = await UserModel.findById(_id);
-            res.send(getUser);
+            const getWork = await WorkModel.findById(_id);
+            res.send(getWork);
         }catch(e){
             res.status(400).send(e);
         }
         })
     
     //update user
-    router.patch("/users/:id", async (req, res)=>{
+    router.patch("/work/:id", async (req, res)=>{
         try{
             const _id = req.params.id
-            const getUser = await UserModel.findByIdAndUpdate(_id, req.body, {
+            const getWork = await WorkModel.findByIdAndUpdate(_id, req.body, {
                     new: true
             });
-            res.send(getUser);
+            res.send(getWork);
         }catch(e){
             res.status(500).send(e);
         }
         })
     
     //delete user
-    router.delete("/users/:id", async (req, res)=>{
+    router.delete("/work/:id", async (req, res)=>{
         try{
             const _id = req.params.id
-            const getUser = await UserModel.findByIdAndDelete(_id);
-            res.send(getUser);
+            const getWork = await WorkModel.findByIdAndDelete(_id);
+            res.send(getWork);
         }catch(e){
             res.status(500).send(e);
         }

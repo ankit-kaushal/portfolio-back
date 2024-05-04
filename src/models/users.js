@@ -7,16 +7,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim:true
     },
-    about: {
-        type: String,
-        required: true
-    },
-    picture: {
-        type: String,
-        required: true
-    }
-})
+    description: String,
+    about: String,
+    pictureUrl: String,
+    social: [{ name: String, url: String }],
+}, {
+    timestamps: true
+});
 
-const UserData = new mongoose.model("User",userSchema)
+const UserModel = new mongoose.model("User",userSchema)
 
-module.exports = UserData;
+module.exports = UserModel;

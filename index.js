@@ -1,5 +1,6 @@
 const express = require("express");
 require("./src/db/conn");
+const cors = require("cors");
 
 const userRouter = require("./src/routers/user");
 const projectRouter = require("./src/routers/project");
@@ -10,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 4080;
 
 app.use(express.json());
+app.use(cors());
 app.use(userRouter);
 app.use(projectRouter);
 app.use(workRouter);

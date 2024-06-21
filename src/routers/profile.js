@@ -7,7 +7,7 @@ const WorkData = require("../models/works");
 router.get("/profile", async (req, res) => {
     try {
         const getUsers = await UserData.findOne({}, { _id: 0, createdAt: 0, updatedAt: 0 }).sort({ updatedAt: -1 });
-        const getProjects = await ProjectData.find();
+        const getProjects = await ProjectData.find().sort({ createdAt: -1 });
         const getWorks = await WorkData.find();
         res.json({ user: getUsers, projects: getProjects, works: getWorks });
     } catch (error) {

@@ -1,18 +1,18 @@
-const express= require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
     projectName: {
         type: String,
         required: true,
-        trim:true
+        trim: true
     },
     projectDescription: String,
     projectLink: String,
     projectGitHub: String,
     projectType: String,
     mainStack: String,
-});
+}, { timestamps: true });
 
 const ProjectModel = new mongoose.model("Project",projectSchema)
 
